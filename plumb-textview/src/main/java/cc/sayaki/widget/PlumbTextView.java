@@ -221,7 +221,11 @@ public class PlumbTextView extends View {
     }
 
     public void setText(CharSequence text) {
-        this.text = text;
+        if (!TextUtils.equals(this.text, text)) {
+            this.text = text;
+            requestLayout();
+            invalidate();
+        }
     }
 
     public int getTextColor() {
